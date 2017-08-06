@@ -4,6 +4,35 @@ var path = require('path');
 
 var app = express();
 app.use(morgan('combined'));
+var content = {
+ title : "Article one | Nitish Prajapati",
+ heading : "MY FIRST ARTICLE",
+ bodycontent : `<p>This is my first article. And i want to make this article best.This is my first article. And i want to make this article best.This is my first article. And i want to make this article best.This is my first article. And i want to make this article best.This is my first article. And i want to make this article best.This is my first article. And i want to make this article best.This is my first article. And i want to make this article best.This is my first article. And i want to make this article best.</p>`
+};
+function cretaTemplate(data)  {
+    var title = data.title;
+    var heading = data.heading;
+    var bodycontent = data.bodycontent;
+var htmlTemplate = `
+<!DOCTYPE html>
+<html>
+    <head>
+    <link href="style.css" type = "rel/stylesheet">
+    <title>${title}</title>
+    </head>
+    <body class = "container">
+    <div>
+    <h1>${heading}</h1>
+    </div>
+    <div>
+    ${bodycontent}
+    </div>
+    <div>
+        <p>NITISH PRAJAPATI</p>
+    </div>
+    </body>
+</html>`;
+}
 
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
